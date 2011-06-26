@@ -1,0 +1,76 @@
+Jenkins configuration for Mongrel2
+==================================
+Lionel Orry <lionel.orry@gmail.com>
+v1.0, 2011-06-26: First version of documentation
+
+This repository holds the minimal set of files to get an instance of
+http://jenkins-ci.org[Jenkins] working with two http://mongrel2.org[Mongrel 2]
+jobs.
+
+== Installation
+
+=== Prerequisites
+
+To run this, you need:
+
+- A working Java environment,
+- `wget` to install the plugins,
+- http://mongrel2.org/static/mongrel2-manual.html#x1-120002.1[all the dependencies]
+  needed to build 'Mongrel 2' if you expect to build it locally (that's a good idea
+  to start with that simple configuration -- we'll see how to build on remote slaves
+  later).
+
+=== Instructions
+
+If the prerequisites above are met, then the following should work:
+
+. Make sure Jenkins is stopped if already present or installed on your machine
+. Backup your previous Hudson/Jenkins configuration somewhere if needed:
++
+--------------
+$ [ -d ~/.jenkins ] && mv ~/.jenkins ~/.jenkins_backup
+$ [ -d ~/.hudson ] && mv ~/.hudson ~/.hudson_backup
+--------------
++
+In short, you must make sure that neither `~/.hudson` nor `~/.jenkins` is present.
+
+. Clone this repo, download Jenkins (if needed unless you prefer using your distro
+  package manager) and install the plugins:
++
+---------
+$ cd <any directory where to hold the repository>
+$ git clone git://github.com/chickenkiller/jenkins_mongrel2.git
+$ ln -s jenkins_mongrel2 $HOME/.jenkins
+$ cd $HOME/.jenkins
+$ wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
+$ ./install_plugins.sh
+---------
+
+WARNING: It's important to install the plugins before starting Jenkins or it may
+mess up the jobs configuration files that expect those to be present.
+
+== Running
+
+There are several ways to execute Jenkins:
+
+- If installed with your distribution package manager, you could use the provided service/startup scripts
+- If you're brave and master Java servlet containers ('Tomcat', 'Glassfish' et. al), you can deploy `jenkins.war` in your container
+- An embedded lightweight servlet container ('Winstone') is included in `jenkins.war`, so the easiest way for a quick start is:
++
+----------
+$ java -jar $HOME/.jenkins/jenkins.war
+----------
+
+Wait for startup, and visit the URL of your instance. In the Winstone case, the default is http://localhost:8080/.
+
+For more information, visit the https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins[Jenkins Wiki].
+
+== What then?
+
+First, have a look at the web interface. It's so easy to understand there should not be much more to explain.
+
+I'll try to give more details on the functionalities of the installed plugins, and procedures to set up
+remote slaves and other more complex setups, but later.
+
+Have fun.
+

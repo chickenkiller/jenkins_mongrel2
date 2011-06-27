@@ -55,7 +55,7 @@
   <builders>
     <hudson.tasks.Shell>
       <command>export LC_ALL=C
-rm -f sloccount.sc &amp;&amp; sloccount --wide --details $PWD &gt; sloccount.sc
+(rm -f sloccount.sc &amp;&amp; sloccount --wide --details $PWD &gt; sloccount.sc) || true
 make</command>
     </hudson.tasks.Shell>
   </builders>

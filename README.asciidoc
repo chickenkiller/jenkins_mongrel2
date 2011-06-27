@@ -40,7 +40,7 @@ In short, you must make sure that neither `~/.hudson` nor `~/.jenkins` is presen
 ---------
 $ cd <any directory where to hold the repository>
 $ git clone git://github.com/chickenkiller/jenkins_mongrel2.git
-$ ln -s jenkins_mongrel2 $HOME/.jenkins
+$ ln -s $PWD/jenkins_mongrel2 $HOME/.jenkins
 $ cd $HOME/.jenkins
 $ wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 $ ./install_plugins.sh

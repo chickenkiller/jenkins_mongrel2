@@ -4,7 +4,7 @@ Lionel Orry <lionel.orry@gmail.com>
 v1.0, 2011-06-26: First version of documentation
 
 This repository holds the minimal set of files to get an instance of
-http://jenkins-ci.org[Jenkins] working with two http://mongrel2.org[Mongrel 2]
+http://jenkins-ci.org[Jenkins] working with three http://mongrel2.org[Mongrel 2]
 jobs.
 
 == Installation

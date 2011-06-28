@@ -76,5 +76,5 @@ Have fun.
 
 == TODO
 
-- Integrate code coverage (hints http://wiki.hudson-ci.org/pages/viewpage.action?pageId=45482230[here])
+- Integrate code coverage (hints http://wiki.jenkins-ci.org/pages/viewpage.action?pageId=45482230[here])
 

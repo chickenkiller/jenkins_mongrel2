@@ -65,6 +65,34 @@ Wait for startup, and visit the URL of your instance. In the Winstone case, the 
 
 For more information, visit the https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins[Jenkins Wiki].
 
+== Jobs
+
+A 'job' in Jenkins is a set of configuration. Each 'job' is isolated in its own folder, and may be run on any number of slaves.
+More or less, we can approximate a 'job' purpose to a build configuration; for example, there could be a build in debug mode,
+a build in release mode, another one with coverage informations, unit testing etc... They are also associated with a repository,
+can poll it for changes, can get a remote build action trigger, and can trigger other jobs when successful (or not).
+
+The _huge_ number of functionalities you can integrate into a job directly depends on the number of plugins installed, because
+the plugins give new powers to jobs. But we'll try to concentrate on the more important ones, because a tank is not needed for our
+slim mongrel2.
+
+Here are the current existing jobs configured for mongrel2:
+
+mongrel2_master:: Compile the source code from the 'master' branch in default mode
+mongrel2_develop:: Compile the source code from the 'develop' branch in default mode
+mongrel2_develop_clang:: Compile the source code from the 'develop' branch with the
+http://clang-analyzer.llvm.org/[LLVM Clang static analyser]. Also publish the HTML report
+automatically.
+
+A few default reports are available for now:
+
+Warnings:: this plugin scans for warnings/errors from the GCC toolchain. Very useful to get the trend.
+Goal: 0 warning, of course! Now you have no excuse not to help.
+Sloccount:: Show the lines of codes and in which languages.
+Useful to make sure the codebase does not grow too much (or too slowly, depends ;))
+Open Tasks:: scans the source files for 'TODO', 'FIXME' and 'XXX' entries to report them nicely. Very flexible,
+can be extended to scan for anything you want.
+
 == What then?
 
 First, have a look at the web interface. It's so easy to understand there should not be much more to explain.

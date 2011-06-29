@@ -4,7 +4,7 @@ Lionel Orry <lionel.orry@gmail.com>
 v1.0, 2011-06-26: First version of documentation
 
 This repository holds the minimal set of files to get an instance of
-http://jenkins-ci.org[Jenkins] working with three http://mongrel2.org[Mongrel 2]
+http://jenkins-ci.org[Jenkins] working with several http://mongrel2.org[Mongrel 2]
 jobs.
 
 == Installation
@@ -46,6 +46,11 @@ $ wget http://mirrors.jenkins-ci.org/war/latest/jenkins.war
 $ ./install_plugins.sh
 ---------
 
+. _(Optional)_ For code coverage, download the
+https://software.sandia.gov/trac/fast/export/HEAD/gcovr/trunk/scripts/gcovr[gcovr script]
+and make it executable (it needs Python 2.x to run)
+
+
 WARNING: It's important to install the plugins before starting Jenkins or it may
 mess up the jobs configuration files that expect those to be present.
 
@@ -62,6 +67,10 @@ $ java -jar $HOME/.jenkins/jenkins.war
 ----------
 
 Wait for startup, and visit the URL of your instance. In the Winstone case, the default is http://localhost:8080/.
+
+_(Optional)_ If you want the code coverage job to work, go to your slave configuration page
+('Manage Jenkins -> Manage Nodes -> <your slave> -> Configure') and add the environment variable `GCOV` that should
+point to the location of the `gcovr` executable script.
 
 For more information, visit the https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins[Jenkins Wiki].
 
@@ -83,6 +92,9 @@ mongrel2_develop:: Compile the source code from the 'develop' branch in default 
 mongrel2_develop_clang:: Compile the source code from the 'develop' branch with the
 http://clang-analyzer.llvm.org/[LLVM Clang static analyser]. Also publish the HTML report
 automatically.
+mongrel2_develop_coverage:: Compile the source code from the 'develop' branch with a `make coverage` like
+command line, then use the `gcovr` script to generate an XML report following Cobertura format to
+get the results nicely integrated. Uses the 'Cobertura' plugin.
 
 A few default reports are available for now:
 
@@ -104,5 +116,5 @@ Have fun.
 
 == TODO
 
-- Integrate code coverage (hints http://wiki.jenkins-ci.org/pages/viewpage.action?pageId=45482230[here])
+- *Done, but to be reviewed* Integrate code coverage (hints http://wiki.jenkins-ci.org/pages/viewpage.action?pageId=45482230[here])
 

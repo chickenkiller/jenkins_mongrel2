@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PLUGINS="analysis-core cobertura git github htmlpublisher log-parser sloccount ssh-slaves warnings"
+PLUGINS="analysis-core cobertura git github htmlpublisher log-parser sloccount ssh-slaves tasks warnings"
 
 which wget >/dev/null 2>&1 || (echo "Please install wget and run this script again." && exit 1)
 

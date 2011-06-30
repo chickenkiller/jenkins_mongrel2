@@ -59,7 +59,7 @@
 # allow make coverage to fail if zcov is not present
 make coverage || true
 echo $WORKSPACE
-gcovr --xml --root=`pwd -P` --output=coverage.xml</command>
+&quot;$GCOVR&quot; --xml --root=`pwd -P` --output=coverage.xml</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
